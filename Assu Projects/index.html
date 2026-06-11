@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asna Sherin E P — Data & BI Analyst | AI Automation Specialist</title>
+  <style>
+    :root {
+      --orange: #FF6600;
+      --orange-light: #FF8833;
+      --orange-dark: #CC4400;
+      --orange-glow: rgba(255,102,0,0.3);
+      --orange-soft: rgba(255,102,0,0.1);
+      --bg: #1E1E1E;
+      --bg2: #252525;
+      --bg3: #2D2D2D;
+      --bg4: #363636;
+      --white: #FFFFFF;
+      --text: #E8E8E8;
+      --grey: #B8B8B8;
+      --grey-dim: #888888;
+      --border: rgba(255,102,0,0.22);
+      --border-dim: rgba(255,255,255,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--orange); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--orange-light); }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(30,30,30,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(255,102,0,0.12); }
+
+    .nav-brand { display: flex; align-items: center; gap: 0.65rem; }
+    .nav-logo-img {
+      width: 36px; height: 36px;
+      object-fit: cover;
+      object-position: center 10%;
+      border-radius: 50%;
+      border: 1.5px solid var(--orange);
+    }
+    .nav-logo-svg { width: 34px; height: 34px; }
+    .nav-name { font-size: 0.88rem; font-weight: 700; color: var(--white); letter-spacing: 0.04em; }
+    .nav-name span { color: var(--orange); }
+
+    nav ul { list-style: none; display: flex; gap: 1.6rem; }
+    nav ul a {
+      color: var(--grey);
+      font-size: 0.77rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+      position: relative;
+    }
+    nav ul a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width 0.25s;
+    }
+    nav ul a:hover { color: var(--orange); }
+    nav ul a:hover::after { width: 100%; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 2rem 70px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 20% 50%, rgba(255,102,0,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(255,102,0,0.05) 0%, transparent 50%),
+                  var(--bg);
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,102,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,102,0,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes gridMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(50px); }
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); pointer-events: none;
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 420px; height: 420px; background: rgba(255,102,0,0.07); top: -120px; left: -120px; animation-delay: 0s; }
+    .orb-2 { width: 320px; height: 320px; background: rgba(255,136,0,0.05); bottom: 0; right: -60px; animation-delay: 4s; }
+    @keyframes orbFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,-20px) scale(1.05); }
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 140px; height: 140px;
+      margin: 0 auto 2rem;
+    }
+    .hero-photo-ring {
+      position: absolute; inset: -5px; border-radius: 50%;
+      background: conic-gradient(var(--orange), var(--orange-light), var(--orange-dark), var(--orange));
+      animation: spinRing 4s linear infinite;
+    }
+    @keyframes spinRing { to { transform: rotate(360deg); } }
+    .hero-photo-inner {
+      position: absolute; inset: 3px; border-radius: 50%;
+      background: var(--bg3); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-photo-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      border-radius: 50%;
+    }
+    .initials-fb {
+      display: none;
+      width: 100%; height: 100%;
+      align-items: center; justify-content: center;
+      font-size: 2.4rem; font-weight: 900; color: var(--orange);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--orange-soft);
+      border: 1px solid var(--border);
+      color: var(--orange-light);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.32rem 1rem; border-radius: 20px;
+      margin-bottom: 1rem;
+      animation: fadeInDown 0.6s ease both;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: 3rem; font-weight: 900;
+      letter-spacing: -0.01em; line-height: 1.1;
+      margin-bottom: 0.55rem;
+      animation: fadeInUp 0.7s 0.1s ease both;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero-headline {
+      font-size: 1rem; color: var(--grey);
+      font-weight: 400; margin-bottom: 0.5rem;
+      animation: fadeInUp 0.7s 0.2s ease both;
+    }
+    .hero-headline strong { color: var(--orange-light); font-weight: 600; }
+    .hero-location {
+      font-size: 0.85rem; color: var(--grey-dim);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.7s 0.3s ease both;
+    }
+    .hero-links {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.65rem; margin-bottom: 2rem;
+      animation: fadeInUp 0.7s 0.4s ease both;
+    }
+    .hero-links a {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--grey); padding: 0.45rem 1.1rem;
+      border-radius: 8px; font-size: 0.82rem; font-weight: 500;
+      transition: all 0.25s;
+    }
+    .hero-links a:hover {
+      background: var(--orange-soft); border-color: var(--orange);
+      color: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--orange-glow);
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.5rem;
+      animation: fadeInUp 0.7s 0.5s ease both;
+    }
+    .badge {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--grey); font-size: 0.76rem; font-weight: 500;
+      padding: 0.3rem 0.8rem; border-radius: 20px;
+      transition: all 0.25s; cursor: default;
+    }
+    .badge:hover { border-color: var(--orange); color: var(--orange-light); background: var(--orange-soft); }
+    .badge.green {
+      background: rgba(5,150,105,0.12);
+      border-color: rgba(52,211,153,0.3); color: #6EE7B7;
+    }
+    .hero-scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+      animation: bounce 2s ease-in-out infinite; opacity: 0.45; z-index: 2;
+    }
+    .hero-scroll-hint span { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey-dim); }
+    .scroll-arrow { width: 18px; height: 18px; border-right: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(45deg); }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.25rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--orange); line-height: 1; }
+    .stat-label { font-size: 0.72rem; color: var(--grey-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 80px 0; }
+    section:nth-child(odd) { background: var(--bg); }
+    section:nth-child(even) { background: var(--bg2); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+    .section-title {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.78rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--orange); margin-bottom: 2.5rem;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+    }
+    .section-title .icon {
+      width: 28px; height: 28px;
+      background: var(--orange-soft); border: 1px solid var(--border);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    /* ─── ABOUT ─── */
+    .summary-text {
+      font-size: 1.05rem; line-height: 1.85; color: var(--text);
+      border-left: 3px solid var(--orange); padding-left: 1.5rem;
+      max-width: 880px;
+    }
+
+    /* ─── SKILLS ─── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.35rem;
+    }
+    .skill-group {
+      background: var(--bg3); border: 1px solid var(--border-dim);
+      border-radius: 12px; padding: 1.35rem;
+      border-top: 2px solid var(--orange);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .skill-group:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px var(--orange-glow);
+      border-color: var(--border);
+    }
+    .skill-group h4 {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--orange); margin-bottom: 0.9rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .skill-tag {
+      background: rgba(255,255,255,0.06); color: var(--text);
+      font-size: 0.73rem; font-weight: 500;
+      padding: 0.22rem 0.6rem; border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.2s; cursor: default;
+    }
+    .skill-tag:hover { background: var(--orange-soft); border-color: var(--orange); color: var(--orange-light); }
+
+    /* ─── EXPERIENCE ─── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .exp-list::before {
+      content: ''; position: absolute;
+      left: 16px; top: 24px; bottom: 0; width: 2px;
+      background: linear-gradient(180deg, var(--orange) 0%, rgba(255,102,0,0.08) 100%);
+    }
+    .exp-item { display: flex; gap: 1.5rem; padding-bottom: 2.5rem; position: relative; }
+    .exp-dot-wrap {
+      flex-shrink: 0; width: 34px;
+      display: flex; flex-direction: column; align-items: center; padding-top: 4px;
+    }
+    .exp-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--orange); border: 2px solid var(--bg3);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+      flex-shrink: 0; z-index: 1; transition: all 0.3s;
+    }
+    .exp-item:hover .exp-dot { box-shadow: 0 0 0 6px var(--orange-glow); transform: scale(1.2); }
+    .exp-item.minor .exp-dot { background: var(--bg4); border-color: rgba(255,102,0,0.35); box-shadow: none; }
+    .exp-body {
+      flex: 1; background: var(--bg3);
+      border: 1px solid var(--border-dim); border-radius: 12px;
+      padding: 1.25rem 1.5rem; transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .exp-item:hover .exp-body { border-color: var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.25); }
+    .exp-item.minor .exp-body { background: rgba(255,255,255,0.025); border-color: rgba(255,255,255,0.05); }
+    .exp-header { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem; }
+    .exp-title { font-size: 1rem; font-weight: 700; color: var(--white); }
+    .exp-item.minor .exp-title { font-size: 0.9rem; color: var(--text); }
+    .exp-sep { color: var(--orange); font-weight: 300; }
+    .exp-company { font-size: 0.95rem; font-weight: 600; color: var(--orange); }
+    .exp-item.minor .exp-company { font-size: 0.88rem; color: var(--grey); }
+    .exp-meta { display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.76rem; color: var(--grey-dim); margin-bottom: 0.9rem; }
+    .exp-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--orange); display: inline-block; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .exp-bullets li { font-size: 0.88rem; color: var(--grey); padding-left: 1.1rem; position: relative; line-height: 1.6; }
+    .exp-bullets li::before { content: '▸'; color: var(--orange); position: absolute; left: 0; font-size: 0.7rem; top: 4px; }
+
+    /* ─── PROJECTS ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.35rem;
+    }
+    .project-card {
+      background: var(--bg3); border: 1px solid var(--border-dim);
+      border-radius: 14px; padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light), transparent);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(255,102,0,0.14);
+      border-color: var(--border);
+    }
+    .project-num {
+      font-size: 2.5rem; font-weight: 900;
+      color: rgba(255,102,0,0.1);
+      position: absolute; top: 0.5rem; right: 1rem;
+      line-height: 1; font-family: monospace;
+    }
+    .project-card h4 { font-size: 0.97rem; font-weight: 700; color: var(--white); line-height: 1.35; padding-right: 2.5rem; }
+    .project-card p { font-size: 0.83rem; color: var(--grey); line-height: 1.6; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .project-tag {
+      background: var(--orange-soft); color: var(--orange-light);
+      font-size: 0.7rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--border);
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--orange);
+      border-top: 1px solid var(--border-dim); padding-top: 0.7rem;
+      margin-top: auto; transition: gap 0.2s, color 0.2s;
+    }
+    .project-link:hover { gap: 0.55rem; color: var(--orange-light); }
+
+    /* ─── EDUCATION ─── */
+    .edu-lang-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .edu-lang-grid { grid-template-columns: 1fr; } }
+
+    .sub-title {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--orange); margin-bottom: 1.1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .sub-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .edu-item .degree { font-size: 0.97rem; font-weight: 700; color: var(--white); }
+    .edu-item .school { font-size: 0.83rem; color: var(--grey); margin-top: 0.2rem; }
+    .lang-row { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 0.25rem; }
+    .lang-pill {
+      background: var(--bg3); border: 1px solid var(--border-dim);
+      border-radius: 20px; padding: 0.35rem 1rem;
+      font-size: 0.81rem; font-weight: 500; color: var(--text);
+      transition: all 0.2s;
+    }
+    .lang-pill:hover { border-color: var(--orange); color: var(--orange-light); background: var(--orange-soft); }
+    .lang-pill span { color: var(--grey-dim); font-size: 0.73rem; margin-left: 0.3rem; }
+
+    /* ─── CERTIFICATIONS ─── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .cert-card {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--bg3); border: 1px solid var(--border-dim);
+      border-left: 3px solid var(--orange);
+      border-radius: 10px; padding: 1.1rem 1.25rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .cert-card:hover {
+      border-color: var(--orange);
+      transform: translateX(5px);
+      box-shadow: 0 4px 20px var(--orange-glow);
+    }
+    .cert-icon-wrap {
+      flex-shrink: 0; width: 38px; height: 38px;
+      background: var(--orange-soft); border: 1px solid var(--border);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .cert-card-body {}
+    .cert-name { font-size: 0.9rem; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 0.2rem; }
+    .cert-org { font-size: 0.77rem; color: var(--grey); }
+    .cert-date {
+      display: inline-block; margin-top: 0.4rem;
+      background: var(--orange-soft); border: 1px solid var(--border);
+      color: var(--orange-light); font-size: 0.7rem; font-weight: 600;
+      padding: 0.18rem 0.55rem; border-radius: 12px;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-section {
+      background: var(--bg2); padding: 80px 0;
+      position: relative; overflow: hidden;
+    }
+    .contact-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(255,102,0,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.25rem; margin-top: 2rem;
+    }
+    .contact-item {
+      background: var(--bg3); border: 1px solid var(--border-dim);
+      border-radius: 10px; padding: 1.1rem 1.25rem;
+      transition: all 0.25s;
+    }
+    .contact-item:hover {
+      border-color: var(--border); transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255,102,0,0.1);
+    }
+    .contact-item .label {
+      font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--orange);
+      font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .contact-item .value { font-size: 0.87rem; color: var(--text); }
+    .contact-item a { color: var(--text); }
+    .contact-item a:hover { color: var(--orange-light); }
+    .availability-bar {
+      margin-top: 2rem; background: var(--orange-soft);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1.5rem;
+      display: flex; flex-wrap: wrap; gap: 1.75rem; align-items: center;
+    }
+    .avail-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.87rem; color: var(--text); }
+    .avail-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #10B981;
+      box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.25); }
+      50% { box-shadow: 0 0 0 7px rgba(16,185,129,0.08); }
+    }
+
+    /* ─── RECOMMENDATIONS ─── */
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .rec-card {
+      background: var(--bg3);
+      border: 1px solid var(--border-dim);
+      border-radius: 14px;
+      padding: 1.75rem 1.75rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .rec-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .rec-card:hover::before { transform: scaleX(1); }
+    .rec-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px rgba(255,102,0,0.12);
+      border-color: var(--border);
+    }
+    .rec-quote-icon {
+      font-size: 5rem;
+      line-height: 0.6;
+      color: var(--orange);
+      opacity: 0.18;
+      font-family: Georgia, serif;
+      font-weight: 900;
+      position: absolute;
+      top: 1rem; right: 1.25rem;
+      pointer-events: none;
+    }
+    .rec-text {
+      font-size: 0.93rem;
+      color: var(--text);
+      line-height: 1.8;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+    .rec-author {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      border-top: 1px solid var(--border-dim);
+      padding-top: 1rem;
+    }
+    .rec-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--orange-soft);
+      border: 1.5px solid var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 800;
+      color: var(--orange); flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+    .rec-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .rec-role {
+      font-size: 0.76rem;
+      color: var(--grey-dim);
+      margin-top: 0.1rem;
+    }
+
+    /* ─── CSM BADGE (fixed top-right) ─── */
+    .csm-badge-float {
+      position: fixed;
+      top: 66px;
+      right: 18px;
+      z-index: 999;
+      width: 80px;
+      height: 80px;
+      cursor: default;
+      filter: drop-shadow(0 4px 14px rgba(255,102,0,0.3));
+      transition: transform 0.3s, filter 0.3s;
+      animation: badgePop 0.6s 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    .csm-badge-float:hover {
+      transform: scale(1.1) rotate(-4deg);
+      filter: drop-shadow(0 6px 20px rgba(255,180,0,0.45));
+    }
+    @keyframes badgePop {
+      from { opacity: 0; transform: scale(0.4) rotate(20deg); }
+      to   { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    /* ─── WHATSAPP BUTTON (fixed bottom-right) ─── */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 22px;
+      z-index: 999;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.5);
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: waPop 0.5s 1s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    .wa-float:hover {
+      transform: scale(1.12);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.65);
+    }
+    @keyframes waPop {
+      from { opacity: 0; transform: scale(0); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+    .wa-pulse {
+      position: absolute;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: rgba(37,211,102,0.35);
+      animation: waPulse 2.2s ease-out infinite;
+    }
+    @keyframes waPulse {
+      0%   { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #141414;
+      border-top: 1px solid rgba(255,102,0,0.12);
+      text-align: center; padding: 1.5rem 2rem;
+    }
+    .footer-logo-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.65rem; margin-bottom: 0.45rem;
+    }
+    .footer-logo { width: 28px; height: 28px; object-fit: contain; border-radius: 50%; }
+    .footer-logo-svg { width: 28px; height: 28px; }
+    footer p { color: var(--grey-dim); font-size: 0.78rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 2rem; }
+      nav ul { display: none; }
+      .skills-grid, .projects-grid, .cert-grid { grid-template-columns: 1fr; }
+      .exp-list::before { left: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <div class="nav-brand">
+    <!-- Logo from assets folder (save as assets/logo.png) -->
+    <img src="./assets/logo.png" class="nav-logo-img" alt="AS"
+         onerror="this.style.display='none'; document.getElementById('navLogoSVG').style.display='block';" />
+    <svg id="navLogoSVG" class="nav-logo-svg" style="display:none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" fill="#2D2D2D" stroke="#FF6600" stroke-width="3"/>
+      <g stroke="#FF6600" stroke-width="6" stroke-linecap="round">
+        <line x1="25" y1="25" x2="75" y2="75"/><line x1="75" y1="25" x2="25" y2="75"/>
+        <line x1="50" y1="18" x2="50" y2="82"/><line x1="18" y1="50" x2="82" y2="50"/>
+      </g>
+    </svg>
+    <span class="nav-name">Asna <span>Sherin</span></span>
+  </div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#recommendations">Reviews</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero" id="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring"></div>
+      <div class="hero-photo-inner">
+        <img src="./assets/photo.png" alt="Asna Sherin E P"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="initials-fb">AS</div>
+      </div>
+    </div>
+
+    <div class="hero-tag">📍 Abu Dhabi, UAE &nbsp;·&nbsp; Available Now</div>
+    <h1>Asna <span>Sherin</span> E P</h1>
+    <div class="hero-headline">
+      <strong>Data &amp; BI Analyst</strong> &nbsp;|&nbsp; <strong>AI Automation Specialist</strong>
+      &nbsp;|&nbsp; Power BI · DAX · Bitrix24 CRM &nbsp;|&nbsp; Real Estate Analytics
+    </div>
+    <div class="hero-location">+971 52 580 4840 &nbsp;·&nbsp; assumay@gmail.com</div>
+
+    <div class="hero-links">
+      <a href="mailto:assumay@gmail.com">✉&nbsp; assumay@gmail.com</a>
+      <a href="tel:+971525804840">📞&nbsp; +971 52 580 4840</a>
+      <a href="https://linkedin.com/in/asna-sherin" target="_blank">🔗&nbsp; LinkedIn</a>
+      <a href="https://github.com/assualduaa" target="_blank">⌥&nbsp; GitHub</a>
+    </div>
+
+    <div class="hero-badges">
+      <span class="badge">Power BI &amp; DAX</span>
+      <span class="badge">SQL · MySQL</span>
+      <span class="badge">n8n AI Automation</span>
+      <span class="badge">Bitrix24 CRM</span>
+      <span class="badge">Real Estate Analytics</span>
+      <span class="badge">ETL / Data Modeling</span>
+      <span class="badge">Tableau</span>
+      <span class="badge">Python · JavaScript</span>
+      <span class="badge">Prompt &amp; Context Engineering</span>
+      <span class="badge green">✔ Immediate Joiner</span>
+      <span class="badge green">UAE Residency (Transferable)</span>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><div class="stat-num" data-count="10">0</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat-item reveal delay-1"><div class="stat-num" data-count="50000">0</div><div class="stat-label">Data Records Processed</div></div>
+    <div class="stat-item reveal delay-2"><div class="stat-num" data-count="15">0</div><div class="stat-label">Digital Solutions Delivered</div></div>
+    <div class="stat-item reveal delay-3"><div class="stat-num" data-count="8">0</div><div class="stat-label">Roles Across UAE &amp; India</div></div>
+    <div class="stat-item reveal delay-4"><div class="stat-num" data-count="5">0</div><div class="stat-label">GitHub Projects</div></div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="section-title reveal"><span class="icon">👤</span> Professional Summary</div>
+    <p class="summary-text reveal delay-1">
+      Data Professional and Certified Scrum Master with over 10 years of experience bridging data analytics, IT operations, and real estate analytics. Expert in end-to-end Business Intelligence, multidimensional data aggregation, advanced data modeling, and custom ETL pipelines. Proficient in managing large-scale CRM datasets within Bitrix24 and implementing automated workflow engines using n8n and AI tools to drive operational efficiency and real-time leadership analytics. Currently delivering Power BI reporting and AI automation solutions at EGC Properties, Abu Dhabi — with a track record of measurable impact across UAE enterprise and government contexts.
+    </p>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="container">
+    <div class="section-title reveal"><span class="icon">⚡</span> Core Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group reveal delay-1">
+        <h4>Analytics &amp; BI</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI Desktop &amp; Service</span><span class="skill-tag">Advanced DAX</span>
+          <span class="skill-tag">Power Query</span><span class="skill-tag">Power Pivot</span><span class="skill-tag">RLS</span>
+          <span class="skill-tag">SQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Google Data Studio</span><span class="skill-tag">Advanced Excel</span>
+          <span class="skill-tag">ETL/ELT Pipelines</span><span class="skill-tag">Data Modeling</span>
+          <span class="skill-tag">EDA</span><span class="skill-tag">KPI Reporting</span>
+          <span class="skill-tag">Statistical Analysis</span>
+          <span class="skill-tag">Predictive Analytics</span><span class="skill-tag">Data Governance</span>
+        </div>
+      </div>
+      <div class="skill-group reveal delay-2">
+        <h4>CRM &amp; Automation</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Bitrix24 Operations</span><span class="skill-tag">Lead &amp; Deal Pipeline Analytics</span>
+          <span class="skill-tag">Conversion Funnel Analysis</span><span class="skill-tag">n8n Workflows</span>
+          <span class="skill-tag">AI Automations</span><span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Power Automate</span><span class="skill-tag">Agent Performance Tracking</span>
+        </div>
+      </div>
+      <div class="skill-group reveal delay-3">
+        <h4>Real Estate Analytics</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Property Finder &amp; Bayut Integration</span>
+          <span class="skill-tag">Campaign Attribution</span><span class="skill-tag">Sales Funnel Optimization</span>
+          <span class="skill-tag">Agent KPIs</span><span class="skill-tag">Real-Time Reporting</span>
+        </div>
+      </div>
+      <div class="skill-group reveal delay-4">
+        <h4>Project &amp; Agile</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Agile / Scrum (CSM)</span><span class="skill-tag">Jira</span>
+          <span class="skill-tag">Asana</span><span class="skill-tag">Requirements Gathering</span>
+          <span class="skill-tag">Stakeholder Management</span><span class="skill-tag">Cross-Functional Leadership</span>
+          <span class="skill-tag">UAT</span><span class="skill-tag">Documentation</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal delay-1">
+        <h4>Web Analytics &amp; MarTech</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Google Analytics (GA4)</span>
+          <span class="skill-tag">Google Tag Manager (GTM)</span>
+          <span class="skill-tag">Conversion Tracking</span>
+          <span class="skill-tag">Custom Dimensions &amp; Events</span>
+          <span class="skill-tag">Campaign Attribution</span>
+          <span class="skill-tag">Email Marketing Analytics</span>
+          <span class="skill-tag">SEO Analytics</span>
+          <span class="skill-tag">Google Webmaster Tools</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal delay-2">
+        <h4>Development &amp; Integration</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">HTML5 / CSS3</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">SQL / MySQL</span>
+          <span class="skill-tag">jQuery / AJAX</span>
+          <span class="skill-tag">CodeIgniter</span>
+          <span class="skill-tag">AWS (Deployment)</span>
+          <span class="skill-tag">Git</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="container">
+    <div class="section-title reveal"><span class="icon">💼</span> Professional Experience</div>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header"><span class="exp-title">Data &amp; BI Analyst</span><span class="exp-sep">—</span><span class="exp-company">EGC Properties</span></div>
+          <div class="exp-meta"><span><span class="meta-dot"></span>Abu Dhabi, UAE</span><span><span class="meta-dot"></span>Feb 2026 – Present</span></div>
+          <ul class="exp-bullets">
+            <li>Engineered scalable Python and n8n automation agents to automate data ingestion pipelines from regional real estate portals (Property Finder, Bayut), reducing manual collection hours by 35% and saving 10+ hours per week.</li>
+            <li>Authored DAX, SQL, and MySQL queries for data profiling, cleaning, and validation of 50,000+ real estate transactions.</li>
+            <li>Developed interactive Power BI dashboards integrated with Bitrix24 CRM data to track property sales trends, improving executive reporting delivery timelines by 18%.</li>
+            <li>Enforced end-to-end data health audits across the Bitrix24 platform, maximizing pipeline conversion visibility by 14%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal delay-1">
+        <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header"><span class="exp-title">Data Analyst &amp; Coordinator</span><span class="exp-sep">—</span><span class="exp-company">Innovyx Technology Solutions</span></div>
+          <div class="exp-meta"><span><span class="meta-dot"></span>Abu Dhabi, UAE (Hybrid)</span><span><span class="meta-dot"></span>Jun 2023 – Feb 2026</span></div>
+          <ul class="exp-bullets">
+            <li>Architected real-time financial BI dashboards and multidimensional data aggregation layers using Power BI and Tableau, improving executive decision visibility by 25%.</li>
+            <li>Implemented an AI-powered intelligent document processing system for an Abu Dhabi government entity, reducing manual data extraction effort by 40%.</li>
+            <li>Built n8n and Google Sheets automation workflows for lead extraction and structured pipeline creation, reducing operational workload by 50%.</li>
+            <li>Standardized 10,000+ healthcare records across ERPNext; documented reporting workflows and data transformation logic to support BI developers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal delay-2">
+        <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header"><span class="exp-title">IT &amp; Data Team Lead</span><span class="exp-sep">—</span><span class="exp-company">Deft Innovations</span></div>
+          <div class="exp-meta"><span><span class="meta-dot"></span>Calicut, India</span><span><span class="meta-dot"></span>Sep 2021 – May 2023</span></div>
+          <ul class="exp-bullets">
+            <li>Led a cross-functional team of 15+ across IT, Analytics, and Business — managing 5+ concurrent projects and delivering 15+ digital solutions within 12 months.</li>
+            <li>Gathered and documented business requirements from clients; produced specifications and handover documents for technical teams.</li>
+            <li>Delivered 30+ client digital campaigns, achieving up to 35% ROI improvement through structured analytics frameworks.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal delay-3">
+        <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header"><span class="exp-title">Data Analytics Intern</span><span class="exp-sep">—</span><span class="exp-company">RP2 Pvt Ltd</span></div>
+          <div class="exp-meta"><span><span class="meta-dot"></span>Calicut, India (Remote)</span><span><span class="meta-dot"></span>Sep 2025 – Jan 2026</span></div>
+          <ul class="exp-bullets">
+            <li>Designed and optimized 8+ interactive Power BI, Tableau, and Excel dashboards delivering KPI-driven insights and improving reporting efficiency by 50%.</li>
+            <li>Applied SQL, Python, and DAX for data extraction, EDA, data modeling, and structured dataset preparation. Projects: Loan Portfolio Financial Analysis, Data Professional Survey Breakdown, Global Happiness Report.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item minor reveal">
+        <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header"><span class="exp-title">Web Developer &amp; Digital Marketer</span><span class="exp-sep">—</span><span class="exp-company">Yospace International, UAE</span></div>
+          <div class="exp-meta"><span><span class="meta-dot"></span>Nov 2019 – Aug 2021</span></div>
+          <ul class="exp-bullets">
+            <li>Implemented GA4 and Google Tag Manager across client websites; executed 50+ email marketing campaigns and built 5+ client websites using HTML5, CSS3, JavaScript, and PHP.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item minor reveal">
+        <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header"><span class="exp-title">Developer &amp; Application Support</span><span class="exp-sep">—</span><span class="exp-company">MYJASH Solutions FZCO, Dubai Silicon Oasis</span></div>
+          <div class="exp-meta"><span><span class="meta-dot"></span>Mar 2017 – Nov 2019</span></div>
+          <ul class="exp-bullets">
+            <li>Built and supported web applications using JavaScript (jQuery, AJAX), PHP, MySQL, and CodeIgniter; handled AWS deployments and integrated Google Analytics tracking.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item minor reveal">
+        <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header"><span class="exp-title">Earlier Roles <span style="font-size:0.78rem;color:var(--grey-dim);font-weight:400;">2013 – 2017</span></span></div>
+          <ul class="exp-bullets">
+            <li><strong style="color:var(--text);">Web Developer — Softroniics, Calicut (Jan 2015 – Jan 2017):</strong> Developed academic IT projects including Information Retrieval System and Online Banking using HTML, CSS, JavaScript, and PHP.</li>
+            <li><strong style="color:var(--text);">SEO Analyst — Cenveo, Calicut (Jun 2013 – Nov 2014):</strong> Delivered SEO analytics and performance reporting for international clients using Google Analytics and Google Webmaster Tools.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="container">
+    <div class="section-title reveal"><span class="icon">🚀</span> Key Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal delay-1">
+        <span class="project-num">01</span>
+        <h4>EGC Properties CRM &amp; Sales Analytics Dashboard</h4>
+        <p>Power BI dashboards integrated with Bitrix24 CRM and real estate portal data to track property sales trends, agent KPIs, and pipeline conversion — with RLS, scheduled refresh, and advanced DAX measures.</p>
+        <div class="project-tags"><span class="project-tag">Bitrix24</span><span class="project-tag">Power BI</span><span class="project-tag">DAX</span><span class="project-tag">RLS</span><span class="project-tag">Real Estate</span></div>
+        <a class="project-link" href="https://github.com/assualduaa/EGC" target="_blank">↗ github.com/assualduaa/EGC</a>
+      </div>
+
+      <div class="project-card reveal delay-2">
+        <span class="project-num">02</span>
+        <h4>AI Intelligent Document Processor</h4>
+        <p>End-to-end LLM pipeline for automated PDF ingestion, intelligent text extraction, document classification, and structured data output — built for an Abu Dhabi government entity using LLM orchestration and prompt engineering.</p>
+        <div class="project-tags"><span class="project-tag">LLM Pipeline</span><span class="project-tag">Python</span><span class="project-tag">n8n</span><span class="project-tag">AI Automation</span></div>
+        <a class="project-link" href="https://github.com/assualduaa/AIBasedDocumentProcessor" target="_blank">↗ github.com/assualduaa/AIBasedDocumentProcessor</a>
+      </div>
+
+      <div class="project-card reveal delay-3">
+        <span class="project-num">03</span>
+        <h4>Financial Data Analysis — Loan Portfolio &amp; Profit Forecasting</h4>
+        <p>SQL and Power BI analysis of a loan portfolio dataset covering risk segmentation, profit forecasting, and KPI dashboarding for financial decision support.</p>
+        <div class="project-tags"><span class="project-tag">SQL</span><span class="project-tag">Power BI</span><span class="project-tag">Financial Analytics</span><span class="project-tag">DAX</span></div>
+        <a class="project-link" href="https://github.com/assualduaa/LoanPortfolioFinancialAnalysis" target="_blank">↗ github.com/assualduaa/LoanPortfolioFinancialAnalysis</a>
+      </div>
+
+      <div class="project-card reveal delay-4">
+        <span class="project-num">04</span>
+        <h4>Market Intelligence &amp; Data Visualization</h4>
+        <p>AI-assisted market research workflow automating data collection and KPI tracking from UAE economic datasets, with Power BI visualization for strategic insights.</p>
+        <div class="project-tags"><span class="project-tag">AI-Assisted</span><span class="project-tag">Power BI</span><span class="project-tag">UAE Data</span><span class="project-tag">Market Research</span></div>
+        <a class="project-link" href="https://github.com/assualduaa/Market-Data-Visualization-Project" target="_blank">↗ github.com/assualduaa/Market-Data-Visualization-Project</a>
+      </div>
+
+      <div class="project-card reveal delay-1">
+        <span class="project-num">05</span>
+        <h4>Inventory &amp; Supply-Chain KPI Analysis</h4>
+        <p>MySQL and Power BI project analyzing inventory levels, supply-chain performance, and operational KPIs to support data-driven stock management decisions.</p>
+        <div class="project-tags"><span class="project-tag">MySQL</span><span class="project-tag">Power BI</span><span class="project-tag">Supply Chain</span><span class="project-tag">KPI</span></div>
+        <a class="project-link" href="https://github.com/assualduaa/MintClassicSQL" target="_blank">↗ github.com/assualduaa/MintClassicSQL</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── RECOMMENDATIONS ── -->
+<section id="recommendations">
+  <div class="container">
+    <div class="section-title reveal"><span class="icon">💬</span> Recommendations</div>
+    <div class="rec-grid">
+
+      <div class="rec-card reveal delay-1">
+        <div class="rec-quote-icon">"</div>
+        <p class="rec-text">She was an exceptional team member whose contributions were instrumental throughout the Innovyx initiative. Her consistent dedication, proactive ownership, and reliable support significantly strengthened the project's execution at every stage. She demonstrated strong commitment, collaborated effectively across the team, and consistently went beyond expectations to ensure successful outcomes. I sincerely appreciate her efforts and the value she brought to the entire journey.</p>
+        <div class="rec-author">
+          <div class="rec-avatar">MA</div>
+          <div>
+            <div class="rec-name">Muhammed Ashraph</div>
+            <div class="rec-role">CEO, Innovyx Technology Solutions &nbsp;·&nbsp; Abu Dhabi, UAE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card reveal delay-2">
+        <div class="rec-quote-icon">"</div>
+        <p class="rec-text">She is a dedicated and hardworking individual who played a key role in supporting Deft Solutions in its emergence as a new brand. Her commitment and contributions have been an integral part of the foundation, and she truly stood as a pillar in our growth journey.</p>
+        <div class="rec-author">
+          <div class="rec-avatar">AA</div>
+          <div>
+            <div class="rec-name">Ajmal Ali</div>
+            <div class="rec-role">CEO, Deft Innovations &nbsp;·&nbsp; Calicut, India</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATIONS (own section) ── -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-title reveal"><span class="icon">🏅</span> Certifications</div>
+    <div class="cert-grid">
+
+      <div class="cert-card reveal delay-1">
+        <div class="cert-icon-wrap">📊</div>
+        <div class="cert-card-body">
+          <div class="cert-name">Advanced Power BI &amp; Data Visualization Certification</div>
+          <div class="cert-org">Datacense Analytics Workshops</div>
+          <span class="cert-date">May 2026</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal delay-2">
+        <div class="cert-icon-wrap">🤖</div>
+        <div class="cert-card-body">
+          <div class="cert-name">Claude 101 Skill Development Program</div>
+          <div class="cert-org">Outskill Learners</div>
+          <span class="cert-date">June 2026</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal delay-3">
+        <div class="cert-icon-wrap">🏅</div>
+        <div class="cert-card-body">
+          <div class="cert-name">Certified Scrum Master (CSM)</div>
+          <div class="cert-org">Scrum Alliance</div>
+          <span class="cert-date">July 2025</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal delay-4">
+        <div class="cert-icon-wrap">💡</div>
+        <div class="cert-card-body">
+          <div class="cert-name">Artificial Intelligence Course</div>
+          <div class="cert-org">1 Million Prompters, Abu Dhabi, UAE</div>
+          <span class="cert-date">March 2025</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal delay-1">
+        <div class="cert-icon-wrap">📢</div>
+        <div class="cert-card-body">
+          <div class="cert-name">Online Marketing Fundamentals</div>
+          <div class="cert-org">eMarketing Institute</div>
+          <span class="cert-date">July 2018</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="container">
+    <div class="section-title reveal"><span class="icon">🎓</span> Education &amp; Languages</div>
+    <div class="edu-lang-grid">
+      <div class="reveal delay-1">
+        <div class="sub-title">Education</div>
+        <div class="edu-item">
+          <div class="degree">Bachelor of Technology (B.Tech), Computer Science</div>
+          <div class="school">University of Kannur, Kerala, India &nbsp;·&nbsp; 2011</div>
+        </div>
+      </div>
+      <div class="reveal delay-2">
+        <div class="sub-title">Languages</div>
+        <div class="lang-row">
+          <div class="lang-pill">English <span>Fluent</span></div>
+          <div class="lang-pill">Malayalam <span>Native</span></div>
+          <div class="lang-pill">Hindi <span>Intermediate</span></div>
+          <div class="lang-pill">Tamil <span>Intermediate</span></div>
+          <div class="lang-pill">Arabic <span>Beginner</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<div class="contact-section" id="contact">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-title reveal"><span class="icon">📬</span> Contact</div>
+    <div class="contact-grid">
+      <div class="contact-item reveal delay-1"><div class="label">Email</div><div class="value"><a href="mailto:assumay@gmail.com">assumay@gmail.com</a></div></div>
+      <div class="contact-item reveal delay-2"><div class="label">Phone</div><div class="value"><a href="tel:+971525804840">+971 52 580 4840</a></div></div>
+      <div class="contact-item reveal delay-3"><div class="label">Location</div><div class="value">Abu Dhabi, UAE</div></div>
+      <div class="contact-item reveal delay-4"><div class="label">LinkedIn</div><div class="value"><a href="https://linkedin.com/in/asna-sherin" target="_blank">linkedin.com/in/asna-sherin</a></div></div>
+      <div class="contact-item reveal delay-1"><div class="label">GitHub</div><div class="value"><a href="https://github.com/assualduaa" target="_blank">github.com/assualduaa</a></div></div>
+    </div>
+    <div class="availability-bar reveal delay-2">
+      <div class="avail-item"><div class="avail-dot"></div> <strong>Immediate Joiner</strong></div>
+      <div class="avail-item">🪪 UAE Residency Visa (Transferable)</div>
+      <div class="avail-item">💼 On-site · Hybrid · Remote</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo-row">
+    <img src="./assets/logo.png" class="footer-logo" alt="AS"
+         onerror="this.style.display='none'; document.getElementById('footerLogoSVG').style.display='block';" />
+    <svg id="footerLogoSVG" class="footer-logo-svg" style="display:none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" fill="#1E1E1E" stroke="#FF6600" stroke-width="3"/>
+      <g stroke="#FF6600" stroke-width="6" stroke-linecap="round">
+        <line x1="25" y1="25" x2="75" y2="75"/><line x1="75" y1="25" x2="25" y2="75"/>
+        <line x1="50" y1="18" x2="50" y2="82"/><line x1="18" y1="50" x2="82" y2="50"/>
+      </g>
+    </svg>
+    <span style="font-size:0.85rem;font-weight:700;color:var(--grey-dim);">Asna Sherin E P</span>
+  </div>
+  <p>Data &amp; BI Analyst | AI Automation Specialist | Abu Dhabi, UAE &nbsp;·&nbsp; © 2026</p>
+</footer>
+
+<!-- ── CSM BADGE FLOAT (top-right) ── -->
+<img src="./assets/badge.png" class="csm-badge-float" alt="Certified Scrum Master" title="Certified Scrum Master — Scrum Alliance" />
+
+<!-- ── WHATSAPP FLOAT (bottom-right) ── -->
+<a href="https://wa.me/971525804840" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.003 2.667C8.638 2.667 2.667 8.638 2.667 16.003c0 2.352.627 4.558 1.72 6.462L2.667 29.333l7.092-1.686a13.254 13.254 0 0 0 6.244 1.572c7.365 0 13.336-5.971 13.336-13.336 0-7.365-5.971-13.216-13.336-13.216zm0 24.256a11.005 11.005 0 0 1-5.614-1.536l-.403-.24-4.208 1.001.99-4.106-.263-.422A10.96 10.96 0 0 1 5.002 16c0-6.076 4.925-11.002 11.001-11.002 6.076 0 11.001 4.926 11.001 11.002 0 6.077-4.925 11.002-11.001 11.002-.001 0 0-.077 0 0zm6.032-8.233c-.33-.165-1.952-.963-2.255-1.073-.303-.11-.523-.165-.744.165s-.854 1.073-1.047 1.292c-.192.22-.385.247-.715.082-.33-.165-1.394-.514-2.655-1.638-.981-.875-1.643-1.956-1.836-2.286-.193-.33-.02-.509.145-.673.148-.148.33-.385.495-.577.165-.192.22-.33.33-.55.11-.22.055-.413-.027-.578-.083-.165-.744-1.793-1.019-2.455-.268-.644-.54-.557-.744-.567l-.633-.011c-.22 0-.578.083-.88.413-.303.33-1.155 1.128-1.155 2.75s1.183 3.19 1.348 3.41c.165.22 2.327 3.554 5.641 4.985.788.34 1.403.543 1.882.695.79.252 1.51.216 2.079.131.634-.095 1.952-.798 2.228-1.569.275-.77.275-1.43.192-1.568-.082-.138-.302-.22-.633-.385z"/>
+  </svg>
+</a>
+
+<!-- ── SCRIPTS ── -->
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count);
+      const duration = 1800;
+      const start = performance.now();
+      const animate = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(eased * target);
+        el.textContent = target >= 1000 ? val.toLocaleString() + '+' : val + '+';
+        if (p < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+</script>
+
+</body>
+</html>
